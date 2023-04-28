@@ -1,0 +1,3 @@
+/Users/danialjavady/desktop/ksm/opentoonz/toonz/sources/CMakeFiles/CMakeScratch/TryCompile-fIV0TT/CMakeFiles/cmTC_db906.dir
+/Users/danialjavady/desktop/ksm/opentoonz/toonz/sources/CMakeFiles/CMakeScratch/TryCompile-fIV0TT/CMakeFiles/edit_cache.dir
+/Users/danialjavady/desktop/ksm/opentoonz/toonz/sources/CMakeFiles/CMakeScratch/TryCompile-fIV0TT/CMakeFiles/rebuild_cache.dir

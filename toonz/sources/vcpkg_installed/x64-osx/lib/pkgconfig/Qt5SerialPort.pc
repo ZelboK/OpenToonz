@@ -1,0 +1,14 @@
+prefix=${pcfiledir}/../..
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/qt5
+
+
+Name: Qt5 SerialPort
+Description: Qt SerialPort module
+Version: 5.15.9
+
+
+Libs: "-L${libdir}" -lQt5SerialPort "-L${prefix}/lib" "-L${prefix}/lib/manual-link" ${prefix}/lib/libQt5Core.a -framework DiskArbitration -framework IOKit -lm -framework AppKit -framework Security -framework ApplicationServices -framework CoreServices -framework CoreFoundation -framework Foundation -ldouble-conversion ${prefix}/lib/libpcre2-16.a -lzstd ${prefix}/lib/libbz2.a ${prefix}/lib/libpng16.a ${prefix}/lib/libz.a ${prefix}/lib/libzstd.a -framework IOKit -framework CoreFoundation ${prefix}/lib/libbz2.a ${prefix}/lib/libpng16.a ${prefix}/lib/libz.a ${prefix}/lib/libzstd.a
+Requires: Qt5Core
+Cflags: -DQT_SERIALPORT_LIB "-I${includedir}/QtSerialPort" "-I${includedir}"

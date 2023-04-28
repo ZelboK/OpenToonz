@@ -1,0 +1,5 @@
+x64-osx/
+x64-osx/share/
+x64-osx/share/getopt/
+x64-osx/share/getopt/vcpkg.spdx.json
+x64-osx/share/getopt/vcpkg_abi_info.txt

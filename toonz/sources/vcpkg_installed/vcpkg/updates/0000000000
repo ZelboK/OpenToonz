@@ -1,0 +1,8 @@
+Package: qt5-serialport
+Version: 5.15.9
+Depends: qt5-base
+Architecture: x64-osx
+Multi-Arch: same
+Abi: 225ff2dabd67bce6b87a05f2e344bd669bba5e0c0946c4bc94ebd99f586c2438
+Description: Qt5 Serial Port - provides access to hardware and virtual serial ports
+Status: install ok half-installed

@@ -6,6 +6,7 @@ set(CMAKE_BUILD_TYPE_INIT Release)
 project(OpenToonz)
 
 
+
 #-----------------------------------------------------------------------------
 # Platform Specific Defaults
 
@@ -147,7 +148,7 @@ elseif(BUILD_ENV_MSVC OR BUILD_ENV_UNIXLIKE)
     set(THIRDPARTY_LIBS_HINTS ${SDKROOT})
 endif()
 
-message(STATUS "Thirdpary Library Search path:" ${THIRDPARTY_LIBS_HINTS})
+message(STATUS "Thirdparty Library Search path:" ${THIRDPARTY_LIBS_HINTS})
 
 if(BUILD_ENV_MSVC)
     set(QT_PATH "C:/Qt/5.15.2/msvc2019${PLATFORM2}" CACHE PATH "Qt installation directory")
@@ -267,7 +268,7 @@ if(Qt5Core_VERSION VERSION_LESS QT_MINIMUM_VERSION)
 endif()
 unset(QT_MINIMUM_VERSION)
 
-if(BUILD_ENV_MSVC)
+if(BUILD_ENV_MSVC) # remove this later
     include_directories(
         SYSTEM
         ${SDKROOT}/glut/3.7.6/include
@@ -285,7 +286,8 @@ if(PLATFORM EQUAL 64)
     if(BUILD_ENV_UNIXLIKE)
         find_package(OpenCV REQUIRED)
     else() # Windows and MacOS case
-        find_package(OpenCV 4.1 REQUIRED)
+        find_package(TIFF REQUIRED)
+        find_package(OpenCV REQUIRED)
     endif()
     #include_directories(
     #    ${SDKROOT}/libjpeg-turbo64/include
@@ -333,15 +335,18 @@ if(BUILD_ENV_MSVC)
     #set(JPEG_LIB ${SDKROOT}/LibJPEG/jpeg-9/lib/LibJPEG-9_${MSVC_LIB_VERSION}${PLATFORM2}.lib)
     set(JPEG_LIB ${SDKROOT}/libjpeg-turbo/lib/jpeg-static_${MSVC_LIB_VERSION}${PLATFORM2}.lib)
     set(TURBOJPEG_LIB ${SDKROOT}/libjpeg-turbo/lib/turbojpeg-static_${MSVC_LIB_VERSION}${PLATFORM2}.lib)
-    set(TIFF_INCLUDE_DIR ${SDKROOT}/tiff-4.0.3/libtiff)
+    message(Source directory: ${CMAKE_SOURCE_DIR})
+
+    set(TIFF_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows/include/tiff.h)
+    message(Source directory: ${CMAKE_SOURCE_DIR})
     set(TIFF_LIB
         optimized ${SDKROOT}/tiff-4.0.3/lib/LibTIFF-4.0.3_${MSVC_LIB_VERSION}${PLATFORM2}.lib
         debug  ${SDKROOT}/tiff-4.0.3/lib/LibTIFF-4.0.3_${MSVC_LIB_VERSION}${PLATFORM2}d.lib
-    )
+    ) # update for windows later
     set(PNG_LIB
         optimized ${SDKROOT}/libpng-1.6.21/lib/libpng16_${MSVC_LIB_VERSION}${PLATFORM2}.lib
         debug  ${SDKROOT}/libpng-1.6.21/lib/libpng16_${MSVC_LIB_VERSION}${PLATFORM2}d.lib
-    )
+    ) #update for windows
     set(GLEW_LIB ${SDKROOT}/glew/glew-1.9.0/lib/glew${PLATFORM}.lib)
     set(LZ4_LIB ${SDKROOT}/Lz4/Lz4_131/lz4_${PLATFORM}.lib)
     set(SUPERLU_LIB ${SDKROOT}/superlu/SuperLU_${MSVC_LIB_VERSION}_${PLATFORM}.lib)
@@ -364,7 +369,9 @@ elseif(BUILD_ENV_APPLE)
     find_library(GL_LIB OpenGL)
     find_library(Z_LIB z)
 
-    find_package(TIFF REQUIRED)
+    message("PAY ATTENTION! TIFFLIB IS" TIFF_LIB)
+    message("PAY ATTENTION! TIFFLIB var IS" ${TIFF_LIBRARY})
+
     set(TIFF_LIB ${TIFF_LIBRARY})
     # the libraries have not .pc nor preferred Find*.cmake. use custom modules.
     find_package(PNG REQUIRED)

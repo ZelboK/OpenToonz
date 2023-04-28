@@ -6,6 +6,11 @@
     "catch2",
     "opencv",
     "boost",
-    "qt5"
+    "qt5",
+    "qt5-script",
+    "qt5-serialport",
+    "qt5-svg",
+    "tiff",
+    "libusb"
   ]
 }

@@ -1,0 +1,13 @@
+prefix=${pcfiledir}/../..
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/qt5
+
+
+Name: Qt5 UiPlugin
+Description: Qt UiPlugin module
+Version: 5.15.9
+
+
+Requires: Qt5Core Qt5Gui Qt5Widgets
+Cflags: -DQT_UIPLUGIN_LIB "-I${includedir}/QtUiPlugin" "-I${includedir}"
